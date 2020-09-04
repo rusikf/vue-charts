@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :audio_segments, only: %i[index] do
       get 'summary', on: :collection
     end
+    resources :users, only: [:index]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

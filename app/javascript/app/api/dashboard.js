@@ -6,6 +6,9 @@ export default {
   },
   summary() {
     return axios.get('/audio_segments/summary')
+  },
+  users() {
+    return axios.get('/users')
   }
 }
 

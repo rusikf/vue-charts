@@ -22,17 +22,20 @@
         </tfoot>
       </table>
       <Summary />
+      <Users />
     </div>
   </div>
 </template>
 
 <script>
-import Api from '../api/audio_segments'
-import Segment from '../components/audio_segments/segment'
-import Summary from '../components/audio_segments/summary'
+import Api from '../api/dashboard'
+import Segment from '../components/dashboard/segment'
+import Summary from '../components/dashboard/summary'
+import Users from '../components/dashboard/users'
+
 export default {
   name: 'AudioSegments',
-  components: { Segment, Summary },
+  components: { Segment, Summary, Users },
   data() {
     return {
       segments: [],
