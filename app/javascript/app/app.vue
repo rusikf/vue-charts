@@ -1,23 +1,14 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <AudioSegments />
   </div>
 </template>
 
 <script>
+import AudioSegments from './views/audio_segments'
 export default {
   name: 'App',
-  data: function () {
-    return {
-      message: "Hello Vue!"
-    }
-  }
+  components: {AudioSegments},
 }
 </script>
 
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
-</style>
