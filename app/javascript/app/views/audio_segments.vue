@@ -21,6 +21,7 @@
           <p class='py-3'>COUNT {{ segments.length }}</p>
         </tfoot>
       </table>
+      <Summary />
     </div>
   </div>
 </template>
@@ -28,17 +29,22 @@
 <script>
 import Api from '../api/audio_segments'
 import Segment from '../components/audio_segments/segment'
+import Summary from '../components/audio_segments/summary'
 export default {
   name: 'AudioSegments',
-  components: { Segment },
+  components: { Segment, Summary },
   data() {
     return {
-      segments: []
+      segments: [],
+      summary: {}
     }
   },
   created() {
     Api.index().then((response) => {
       this.segments = response.data
+    })
+    Api.summary().then((response) => {
+      this.summary = response.data
     })
   }
 }
