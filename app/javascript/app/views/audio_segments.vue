@@ -17,6 +17,9 @@
             :segment="segment"
             :key="segment.id"/>
         </tbody>
+        <tfoot>
+          <p class='py-3'>COUNT {{ segments.length }}</p>
+        </tfoot>
       </table>
     </div>
   </div>

@@ -2,8 +2,8 @@
   <tr>
     <th scope="row">{{ segment.id }}</th>
     <td>{{ segment.user.name }} </td>
-    <td>{{ segment.started_at }}</td>
-    <td>{{ segment.ended_at }}</td>
+    <td>{{ displayTime(segment.started_at) }}</td>
+    <td>{{ displayTime(segment.ended_at) }}</td>
   </tr>
 </template>
 
@@ -12,6 +12,11 @@
     name: 'Segment',
     props: {
       segment: Object
+    },
+    methods: {
+      displayTime(dateString) {
+        return new Date(dateString).toUTCString().split(" ")[4]
+      }
     }
   }
 </script>
