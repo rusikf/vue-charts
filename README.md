@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Setup:
+  `cp config/database.template.yml config/database.yml`
+  `rake db:setup db:seed`
+  `yarn install`
 
-Things you may want to cover:
+### Run
+  `rails s`
+  `bin/webpack-dev-server`
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
