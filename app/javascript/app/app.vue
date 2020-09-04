@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <AudioSegments />
+    <Dashboard />
   </div>
 </template>
 
 <script>
-import AudioSegments from './views/audio_segments'
+import Dashboard from './views/dashboard'
 export default {
   name: 'App',
-  components: {AudioSegments},
+  components: { Dashboard },
 }
 </script>
 

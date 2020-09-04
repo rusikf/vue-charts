@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './app.vue'
-// TODO: add vuex import store from './store/index'
 import axios from 'axios'
+// TODO: add vuex for toggle users visibility
 import { API_HOST } from './constants'
 
 axios.defaults.baseURL = API_HOST

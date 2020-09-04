@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import Api from '../../api/audio_segments' // TODO: webpacker alias @
+import Api from '../../api/dashboard' // TODO: webpacker alias @
 import Chart from './chart'
 export default {
   name: 'AudioSummary',
