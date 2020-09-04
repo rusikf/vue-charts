@@ -1,32 +1,33 @@
 <template>
-  <div>
-    <div>
-       <h4>How many times a participant speaks during a call</h4>
-       <ul>
-        <li v-for="(key, value) in summary.times_per_participant">
-          {{ `${key}: ${value}` }}
-        </li>
-       </ul>
-       <h4>The average duration of each participant's contribution</h4>
-       <ul>
-        <li v-for="(key, value) in averageDuration">
-          {{ `${key}: ${value}` }}
-        </li>
-       </ul>
-       <h4>Who contributes the most and least to a call</h4>
-       <p>Best user - {{ bestUser }}</p>
-       <p>Worst user - {{ worstUser }}</p>
+  <div v-if="Object.keys(summary.average_duration).length > 0">
+    <div class='row' >
+       <div class='col-6'>
+         <Chart :chartdata="timesChartData"/>
+       </div>
+
+       <div class='col-6'>
+         <Chart :chartdata="averageChartData"/>
+       </div>
+    </div>
+    <h4>Who contributes the most and least to a call</h4>
+    <p>Best user - {{ bestUser }}</p>
+    <p>Worst user - {{ worstUser }}</p>
     </div>
   </div>
 </template>
 
 <script>
 import Api from '../../api/audio_segments' // TODO: webpacker alias @
+import Chart from './chart'
 export default {
   name: 'AudioSummary',
+  components: { Chart },
   data() {
     return {
-      summary: {}
+      summary: {
+        times_per_participant: {},
+        average_duration: {}
+      }
     }
   },
   created() {
@@ -34,9 +35,34 @@ export default {
       this.summary = response.data
     })
   },
+  methods: {
+    chartData({ obj, title }) {
+      return {
+        labels: Object.keys(obj),
+        datasets: [{
+          label: title,
+          data: Object.values(obj)
+        }]
+      }
+    }
+  },
   computed: {
     averageDuration() {
       return this.summary.average_duration
+    },
+
+    averageChartData() {
+      return this.chartData({
+        obj: this.averageDuration,
+        title: "The average duration of each participant's contribution"
+      })
+    },
+
+    timesChartData() {
+      return this.chartData({
+        obj: this.summary.times_per_participant,
+        title: 'How many times a participant speaks during a call'
+      })
     },
 
     sortedStats() {
